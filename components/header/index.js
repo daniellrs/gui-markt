@@ -16,8 +16,12 @@ export const Header = () => {
     const token = localStorage.getItem("token");
 
     if (token && !usuario) {
-      const user = await api.getLoggedUser();
-      setUsuario(user);
+      try {
+        const user = await api.user.get();
+        setUsuario(user);
+      } catch (error) {
+        localStorage.removeItem("token");
+      }
     }
   };
 

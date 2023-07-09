@@ -21,7 +21,7 @@ export default function SignUp() {
     try {
       clearErrors();
       setLoading(true);
-      await api.signup({ nome, cpf, email, senha });
+      await api.user.signup({ nome, cpf, email, senha });
       router.push("/login");
     } catch (error) {
       verifyErrors(error);

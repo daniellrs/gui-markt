@@ -19,7 +19,7 @@ export default function Login() {
     try {
       clearErrors();
       setLoading(true);
-      const { token } = await api.login({ email, senha });
+      const { token } = await api.auth.login({ email, senha });
       localStorage.setItem("token", token);
       router.push("/");
     } catch (error) {
