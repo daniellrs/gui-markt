@@ -59,6 +59,9 @@ export const Header = () => {
             <div className="flex gap-2 justify-center items-center bg-zinc-800 py-2 px-3 rounded-3xl text-sm">
               <FiUser /> {usuario.nome}
             </div>
+            <Button size="sm" href="/cart">
+              Carrinho
+            </Button>
             <Button size="sm" href="/address">
               Endereços
             </Button>
