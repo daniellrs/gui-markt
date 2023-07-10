@@ -93,6 +93,10 @@ export default function Cart() {
                 Aplicar
               </Button>
             </div>
+            {cart.cupomAplicado?.nome && (
+              <p>Cupom aplicado: {cart.cupomAplicado.nome}</p>
+            )}
+
             <p>Valor: R$ {cart.valorParcial.toFixed(2)}</p>
             {cart.valorParcial !== cart.valorFinal && (
               <p>Valor com desconto: R$ {cart.valorFinal}</p>
