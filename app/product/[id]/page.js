@@ -20,12 +20,23 @@ export default function Product({ params }) {
   const router = useRouter();
   const [loading, setLoading] = useState(true);
   const [loadingAddToCart, setLoadingAddToCart] = useState(false);
+  const [loadingBuy, setLoadingBuy] = useState(false);
   const [loadingQuestion, setLoadingQuestion] = useState(false);
   const [question, setQuestion] = useState("");
   const [reviewTitle, setReviewTitle] = useState("");
   const [reviewDescription, setReviewDescription] = useState("");
   const [reviewGrade, setReviewGrade] = useState("1");
   const [product, setProduct] = useState();
+
+  const buy = async () => {
+    try {
+      setLoadingBuy(true);
+      await api.purchase.buy([product.id]);
+      router.push("/purchase");
+    } finally {
+      setLoadingBuy(false);
+    }
+  };
 
   const addQuestion = async () => {
     try {
@@ -111,6 +122,9 @@ export default function Product({ params }) {
               <p>R$ {product.valor.toFixed(2)}</p>
               <Button onClick={addToCart} loading={loadingAddToCart}>
                 Adicionar ao carrinho
+              </Button>
+              <Button onClick={buy} loading={loadingBuy}>
+                Comprar
               </Button>
 
               <div className="flex gap-2 flex-wrap max-w-[24rem]">
